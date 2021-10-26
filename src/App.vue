@@ -1,13 +1,10 @@
 <template>
-  <MyCp></MyCp>
+  <h1>我的组件</h1>
+  <router-view></router-view>
 </template>
 
 <script>
-import MyCp from "./components/MyCp.vue";
 export default {
   name: "App",
-  components: {
-    MyCp,
-  },
 };
 </script>
