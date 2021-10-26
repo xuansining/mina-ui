@@ -1,10 +1,14 @@
 <template>
-  <h1>我的组件</h1>
   <router-view></router-view>
 </template>
 
 <script>
+import { provide, ref } from "vue";
 export default {
   name: "App",
+  setup() {
+    const asideVisible = ref(false);
+    provide("asideVisible", asideVisible);
+  },
 };
 </script>
