@@ -1,24 +1,34 @@
 <template>
-  <button class="mina-button" :class="{ [`mina-theme-${theme}`]: theme }">
+  <button class="mina-button" :class="classes">
     <slot />
   </button>
 </template>
 <script lang="ts">
+import { computed } from "@vue/reactivity";
 export default {
   props: {
     theme: {
       type: String,
       default: "button",
     },
+    size: {
+      type: String,
+      default: "normal",
+    },
   },
-  inheritAttrs: false,
-  setup(props, context) {
-    const { size, ...rest } = context.attrs;
-    return { size, rest };
+  setup(props) {
+    const { theme, size } = props;
+    const classes = computed(() => {
+      return {
+        [`mina-theme-${theme}`]: theme,
+        [`mina-size-${size}`]: size,
+      };
+    });
+    return { classes };
   },
 };
 </script>
-<style lang="scss" >
+<style lang="scss">
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
@@ -51,6 +61,37 @@ $radius: 4px;
   }
   &::-moz-focus-inner {
     border: 0;
+  }
+  &.mina-theme-link {
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+
+    &:hover,
+    &:focus {
+      color: lighten($blue, 10%);
+    }
+  }
+  &.mina-theme-text {
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    &:hover,
+    &:focus {
+      background: darken(white, 5%);
+    }
+  }
+  &.mina-theme-button {
+    &.mina-size-big {
+      font-size: 24px;
+      height: 48px;
+      padding: 0 16px;
+    }
+    &.mina-size-small {
+      font-size: 12px;
+      height: 20px;
+      padding: 0 4px;
+    }
   }
 }
 </style>
