@@ -1,9 +1,10 @@
 <template>
   <div>
     <h1>示例1</h1>
-    <Button @click="onClick" @focus="onClick" @mouseover="onClick" :size="size">
-      我是示例一
-    </Button>
+    <Button> 示例1 </Button>
+    <Button theme="link"> 示例2 </Button>
+    <Button theme="text"> 示例3 </Button>
+    <Button theme="button"> 示例4 </Button>
   </div>
 </template>
 <script lang="ts">
