@@ -15,13 +15,18 @@ export default {
       type: String,
       default: "normal",
     },
+    level: {
+      type: String,
+      default: "normal",
+    },
   },
   setup(props) {
-    const { theme, size } = props;
+    const { theme, size, level } = props;
     const classes = computed(() => {
       return {
         [`mina-theme-${theme}`]: theme,
         [`mina-size-${size}`]: size,
+        [`mina-level-${level}`]: level,
       };
     });
     return { classes };
@@ -34,9 +39,11 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
+$red: red;
 .mina-button {
   box-sizing: border-box;
   height: $h;
+  transition: background 250ms;
   padding: 0 12px;
   cursor: pointer;
   display: inline-flex;
@@ -81,16 +88,63 @@ $radius: 4px;
       background: darken(white, 5%);
     }
   }
+
+  &.mina-size-big {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
+  &.mina-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
+  }
+
   &.mina-theme-button {
-    &.mina-size-big {
-      font-size: 24px;
-      height: 48px;
-      padding: 0 16px;
+    &.mina-level-main {
+      background: $blue;
+      color: white;
+      border-color: $blue;
+      &:hover,
+      &:focus {
+        background: darken($blue, 10%);
+        border-color: darken($blue, 10%);
+      }
     }
-    &.mina-size-small {
-      font-size: 12px;
-      height: 20px;
-      padding: 0 4px;
+    &.mina-level-danger {
+      background: $red;
+      border-color: $red;
+      color: white;
+      &:hover,
+      &:focus {
+        background: darken($red, 10%);
+        border-color: darken($red, 10%);
+      }
+    }
+  }
+  &.mina-theme-link {
+    &.mina-level-danger {
+      color: $red;
+      &:hover,
+      &:focus {
+        color: darken($red, 10%);
+      }
+    }
+  }
+  &.mina-theme-text {
+    &.mina-level-main {
+      color: $blue;
+      &:hover,
+      &:focus {
+        color: darken($blue, 10%);
+      }
+    }
+    &.mina-level-danger {
+      color: $red;
+      &:hover,
+      &:focus {
+        color: darken($red, 10%);
+      }
     }
   }
 }
