@@ -10,7 +10,7 @@ export default {
   },
   setup(props, context) {
     const troggle = () => {
-      context.emit("input", !props.value);
+      context.emit("update:value", !props.value);
     };
     return { troggle };
   },
