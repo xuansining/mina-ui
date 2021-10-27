@@ -36,7 +36,7 @@ export default {
 </script>
 <style lang="scss">
 aside {
-  background: lightblue;
+  background: rgb(42, 113, 136);
   width: 150px;
   padding: 16px;
   position: fixed;
@@ -50,6 +50,12 @@ aside {
     > li {
       padding: 4px 0;
     }
+  }
+  @media (max-width: 500px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 70px;
   }
 }
 </style>
