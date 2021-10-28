@@ -17,12 +17,17 @@
       <p>hi.................</p>
     </template>
   </Dialog>
+
+  <h1>示例2</h1>
+  <h2>一句代码搞定Dialog</h2>
+  <Button @click="showDialog">show</Button>
 </template>
 
 <script lang="ts">
 import Dialog from "../libs/Dialog.vue";
 import Button from "../libs/Button.vue";
-import { ref } from "vue";
+import { ref, h } from "vue";
+import { openDialog } from "../libs/openDialog";
 export default {
   components: {
     Dialog,
@@ -34,12 +39,25 @@ export default {
       x.value = !x.value;
     };
     const f1 = () => {
+      console.log("ok");
+
       return true;
     };
     const f2 = () => {
-      return false;
+      console.log("cancel");
+
+      return true;
     };
-    return { x, toggle, f1, f2 };
+    const showDialog = () => {
+      openDialog({
+        title: h("strong", {}, "标题"),
+        content: "你好",
+        onOk: f1,
+        onCancel: f2,
+        onClickOverlayClose: true,
+      });
+    };
+    return { x, toggle, f1, f2, showDialog };
   },
 };
 </script>
