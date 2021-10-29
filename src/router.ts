@@ -6,10 +6,13 @@ import TabDemo from './components/TabDemo.vue'
 import DialogDemo from './components/DialogDemo.vue'
 import ButtonDemo from './components/ButtonDemo.vue'
 import DocDemo from './components/DocDemo.vue'
-import GetStart from './views/GetStart.vue'
-import Install from './views/Install.vue'
-import Intro from './views/Intro.vue'
 
+
+import { h } from 'vue'
+import Markdown from './views/Markdown.vue'
+const md = (filename) => {
+    return h(Markdown, { path: `../markdown/${filename}.md`, key: filename })
+}
 const history = createWebHashHistory()
 export const router = createRouter({
     history: history,
@@ -41,15 +44,15 @@ export const router = createRouter({
                 },
                 {
                     path: 'install',
-                    component: Install
+                    component: md('install')
                 },
                 {
                     path: 'intro',
-                    component: Intro
+                    component: md('instro')
                 },
                 {
                     path: 'getstart',
-                    component: GetStart
+                    component: md('get-started')
                 }
 
             ]
