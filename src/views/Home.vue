@@ -60,7 +60,7 @@ $btn_blue: black;
 $font: #050505;
 .home {
   background: #ede8e4;
-  height: 100vh;
+  min-height: 100vh;
 }
 .topnavAndBanner {
   background-color: $main;
