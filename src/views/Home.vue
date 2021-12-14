@@ -1,17 +1,18 @@
 <template>
-  <div>
+  <div class="home">
     <div class="topnavAndBanner">
       <top-nav></top-nav>
       <div class="banner">
-        <h1>mina-UI</h1>
-        <h2>一个高级的UI框架</h2>
+        <h1 class="banner-title">mina-UI</h1>
+        <h2 class="banner-subtitle">
+          一套为开发者、设计师和产品经理准备的基于 Vue 3.0 的桌面端组件库
+        </h2>
         <p class="actions">
-          <a href="github.com">GitHub</a>
+          <a href="#">GitHub</a>
           <router-link to="/doc">开始</router-link>
         </p>
       </div>
     </div>
-
     <div class="features">
       <ul>
         <li>
@@ -19,14 +20,14 @@
             <use xlink:href="#icon-vue"></use>
           </svg>
           <h3>基于 Vue 3</h3>
-          <p>骄傲地使用了 Vue 3 Composition API</p>
+          <p>骄傲地使用了Vue3 Composition API</p>
         </li>
         <li>
           <svg>
             <use xlink:href="#icon-ts"></use>
           </svg>
           <h3>基于 TypeScript</h3>
-          <p>源代码采用 TypeScript 书写（非严格检查）</p>
+          <p>源代码采用 TypeScript 书写</p>
         </li>
         <li>
           <svg>
@@ -54,29 +55,39 @@ $green: #02bcb0;
 $border-radius: 4px;
 $color: #007974;
 
+$main: #d6d0d7;
+$btn_blue: black;
+$font: #050505;
+.home {
+  background: #ede8e4;
+  height: 100vh;
+}
 .topnavAndBanner {
-  background: linear-gradient(
-    145deg,
-    rgba(227, 255, 253, 1) 0%,
-    rgba(183, 233, 230, 1) 100%
-  );
+  background-color: $main;
+  // background: linear-gradient(
+  //   145deg,
+  //   rgba(227, 255, 253, 1) 0%,
+  //   rgba(183, 233, 230, 1) 100%
+  // );
   clip-path: ellipse(80% 60% at 50% 40%);
 }
 .banner {
-  color: $color;
+  color: $font;
   padding: 100px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  .banner-title {
+    font-size: 35px;
+  }
 
   > .actions {
     padding: 8px 0;
     a {
-      background: $green;
+      background: $btn_blue;
       color: white;
       margin: 0 8px;
-
       display: inline-block;
       padding: 8px 24px;
       border-radius: $border-radius;
@@ -86,20 +97,36 @@ $color: #007974;
     }
   }
 }
+@media (max-width: 800px) {
+  .banner .banner-subtitle {
+    text-align: center;
+    font-size: 18px;
+  }
+}
 .features {
   margin: 64px auto;
-  width: 400px;
+  padding: 0 16px;
+
   @media (min-width: 800px) {
     width: 800px;
+    > ul {
+      > li {
+        width: 50%;
+      }
+    }
   }
   @media (min-width: 1200px) {
     width: 1200px;
+    > ul {
+      > li {
+        width: 33.3333%;
+      }
+    }
   }
   > ul {
     display: flex;
     flex-wrap: wrap;
     > li {
-      width: 400px;
       margin: 16px 0;
       display: grid;
       justify-content: start;

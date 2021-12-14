@@ -51,10 +51,14 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$aside-bg: #d6d0d7;
+$aside-index: 10;
 .layout {
+  background: white;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  z-index: $aside-index;
   > .nav {
     flex-shrink: 0;
   }
@@ -78,7 +82,7 @@ export default {
   }
 }
 aside {
-  background: lightblue;
+  background: $aside-bg;
   width: 150px;
   padding: 16px 0;
   position: fixed;
@@ -99,13 +103,18 @@ aside {
         padding: 4px 16px;
         text-decoration: none;
         text-decoration-line: none;
+        position: relative;
+
         &:hover {
-          background: white;
+          top: 3px;
+          background: #626277;
+          color: white;
         }
       }
 
       .router-link-active {
-        background: white;
+        background: #626277;
+        color: white;
       }
     }
   }

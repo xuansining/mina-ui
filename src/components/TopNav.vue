@@ -2,7 +2,7 @@
   <div class="topnav">
     <router-link to="/" class="logo">
       <svg class="icon">
-        <use xlink:href="#icon-king"></use>
+        <use xlink:href="#icon-daxiang"></use>
       </svg>
     </router-link>
     <ul class="menu">
@@ -46,7 +46,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 20;
   > .logo {
     max-width: 6em;
     margin-right: auto;
@@ -68,7 +68,8 @@ export default {
     display: inline-block;
     width: 24px;
     height: 24px;
-    background: fade-out(black, 0.9);
+    background: transparent;
+    // background: fade-out(black, 0.9);
     position: absolute;
     left: 16px;
     top: 50%;

@@ -1,50 +1,28 @@
 <template>
   <div>
     <h1>Switch 组件示例</h1>
-    <div class="demo">
-      <h2>常规用法</h2>
-      <div class="demo-component">
-        <Switch1demo />
-      </div>
-      <div class="demo-actions">
-        <Button>查看代码</Button>
-      </div>
-      <div class="demo-code">
-        <pre>{{ Switch1demo.__sourceCode }}</pre>
-      </div>
-    </div>
-
-    <div class="demo">
-      <h2>支持 disabled</h2>
-      <div class="demo-component">
-        <Switch2demo />
-      </div>
-      <div class="demo-actions">
-        <Button>查看代码</Button>
-      </div>
-      <div class="demo-code">
-        <pre>{{ Switch2demo.__sourceCode }}</pre>
-      </div>
-    </div>
+    <Demo :component="Switch1demo"></Demo>
+    <Demo :component="Switch2demo"></Demo>
   </div>
 </template>
 <script lang="ts">
 import { ref } from "vue";
-import Switch from "../libs/Switch.vue";
-import Button from "../libs/Button.vue";
+
 import Switch1demo from "./Switch1.demo.vue";
 import Switch2demo from "./Switch2.demo.vue";
-console.log(Switch1demo.__sourceCode);
+
+import Demo from "./Demo.vue";
+
 export default {
   setup() {
     const bool = ref(false);
     return { bool, Switch1demo, Switch2demo };
   },
   components: {
-    Switch: Switch,
-    Button: Button,
     Switch1demo,
     Switch2demo,
+
+    Demo,
   },
 };
 </script>
@@ -75,4 +53,7 @@ $border-color: #d9d9d9;
     }
   }
 }
+</style>
+<style lang="scss">
+@import "prismjs/themes/prism-coy.css";
 </style>

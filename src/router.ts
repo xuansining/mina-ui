@@ -1,3 +1,4 @@
+/*@vite-ignore*/
 import { createWebHashHistory, createRouter } from 'vue-router'
 import Home from './views/Home.vue'
 import Doc from './views/Doc.vue'
@@ -6,13 +7,12 @@ import TabDemo from './components/TabDemo.vue'
 import DialogDemo from './components/DialogDemo.vue'
 import ButtonDemo from './components/ButtonDemo.vue'
 import DocDemo from './components/DocDemo.vue'
-
-
+import intro from './markdown/instro.md'
+import getStarted from './markdown/get-started.md'
+import install from './markdown/install.md'
 import { h } from 'vue'
 import Markdown from './views/Markdown.vue'
-const md = (filename) => {
-    return h(Markdown, { path: `../markdown/${filename}.md`, key: filename })
-}
+const md = string => h(Markdown, { content: string, key: string })
 const history = createWebHashHistory()
 export const router = createRouter({
     history: history,
@@ -26,7 +26,7 @@ export const router = createRouter({
             children: [
                 {
                     path: '',
-                    component: DocDemo
+                    redirect: '/doc/intro'
                 },
                 {
                     path: 'switch',
@@ -44,15 +44,17 @@ export const router = createRouter({
                 },
                 {
                     path: 'install',
-                    component: md('install')
+             
+                    component: md(install)
                 },
                 {
                     path: 'intro',
-                    component: md('instro')
+                    
+                    component: md(intro)
                 },
                 {
                     path: 'getstart',
-                    component: md('get-started')
+                    component: md(getStarted)
                 }
 
             ]
